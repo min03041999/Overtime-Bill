@@ -55,6 +55,7 @@ const Overtime = () => {
     Date_To: Yup.string().required("Vui lòng nhập đến ngày tăng ca!"),
     Time_Start: Yup.string().required("Vui lòng nhập thời gian bắt đầu!"),
     Time_End: Yup.string().required("Vui lòng nhập thời gian kết thúc!"),
+    Remark: Yup.string().trim().required("Vui lòng nhập lý do!"),
   });
 
   const validate = (values) => {
@@ -372,6 +373,12 @@ const Overtime = () => {
                     formik.errors.Remark && formik.touched.Remark
                       ? "is-invalid"
                       : ""
+                  }
+                  error={formik.errors.Remark && formik.touched.Remark === true}
+                  helperText={
+                    formik.errors.Remark && formik.touched.Remark
+                      ? formik.errors.Remark
+                      : null
                   }
                   onChange={formik.handleChange}
                   value={formik.values.Remark}
